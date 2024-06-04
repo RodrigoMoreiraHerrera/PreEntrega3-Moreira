@@ -1,0 +1,195 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<body class="container">
+    
+  
+  <!--NavBar-->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Productos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contacto</a>
+                </li>
+                <li class="nav-item">
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+            </div>
+            <button type="button" class="btn btn-outline-success "><i class="bi bi-cart"></i></button>
+        </div>
+        </nav>
+
+
+
+<!--carrucel-->
+        <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+            <div id="carouselInner" class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/Carousel/consola-audiovisual.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/Carousel/consola-dj.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/Carousel/pc-interior.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/Carousel/pcgaming.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/Carousel/rep-pc.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+
+        <h1>Bienvenidos</h1>
+          <h2>Ofertas destacados</h2>
+
+
+
+<!--CARRUCEL DESCUENTOS-->
+<div id="carouselExample" class="carousel slide carousel-dark">
+  <div id ="carouselDescInner" class="carousel-inner d-flex ">
+    <!--
+    <div class="carousel-item active">
+      <div class="card cardDescuento d-block w-100" style="width: 14rem;">
+        <img src="img/cards/assus/asus.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Pc Asus</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          <p class="descuento">40% DE DESCUENTO</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="carousel-item">
+      <div class="card cardDescuento d-block w-100" style="width: 14rem;">
+        <img src="img/cards/assus/asus.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Pc Asus</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          <p class="descuento">40% DE DESCUENTO</p>
+        </div>
+    </div>
+  </div>
+
+
+    <div class="carousel-item">
+      <div class="card cardDescuento d-block w-100" style="width: 14rem;">
+        <img src="img/cards/assus/asus.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Pc Asus</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          <p class="descuento">40% DE DESCUENTO</p>
+        </div>
+    </div>
+  </div>
+-->
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+
+<!--CARDS CON DESCUENTO-->
+<div class="card cardDescuento" style="width: 14rem;">
+  <img src="img/cards/assus/asus.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Pc Asus</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+    <p class="descuento">40% DE DESCUENTO</p>
+  </div>
+</div>
+
+
+
+          <h2>Nuestros Productos</h2>
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio0" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio0">TODOS</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio1">PC</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">ACCESORIOS</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio3">GAMER</label>
+          </div>
+            <div id="containerProductos" class="row">
+<!--CARDS -->
+
+
+            </div>
+
+
+<!--CARDS -->
+          <div class="card" style="width: 14rem;">
+            <img src="img/cards/assus/asus.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Pc Asus</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h6 class="text-end">$1000</h6>
+              <a href="#" class="btn btn-primary">Agregar al carrito</a>
+              
+            </div>
+          </div>
+
+
+
+<h2>FOOTER</h2>
+
+
+
+
+
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
