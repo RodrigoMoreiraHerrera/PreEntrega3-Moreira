@@ -1,0 +1,63 @@
+PRODUCTOS
+
+cantidad productosCarrito
+
+paginacion
+
+btnMas
+
+styles de cartel descuento
+styles cards
+styles titulos
+carrusel??
+
+btnAgregarCarrito
+
+buscarProducto
+
+filtroProductos
+
+
+
+
+
+
+
+
+CARRITO
+
+renderCarrito
+
+btnCarrito
+
+vaciarCarrito
+
+btnEliminar
+
+btnComprar
+
+contador
+
+
+
+
+
+
+CONTACTO
+
+renderContacto
+
+
+
+
+
+GENERAL
+
+inicio sesion?
+mas productos
+
+
+
+
+
+

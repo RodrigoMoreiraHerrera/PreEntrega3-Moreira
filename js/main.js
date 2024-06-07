@@ -8,11 +8,13 @@ const Producto = function(id,nombre,descripcion,precio,stock,img,descuento){
     this.descuento = descuento;
 }
 
-const ProductoCarrito = function(nombre,precio) {
+const ProductoCarrito = function(nombre,precio,cantidad) {
     this.nombre = nombre
     this.precio = precio
+    this.cantidad = cantidad
 }
 
+let carrito = []
 
 let asus = new Producto (
     "PC",
@@ -126,11 +128,11 @@ function renderProductos (){
 
         cardBody.appendChild(title)
         cardBody.appendChild(desc)
-//debugger
+
         if (elemento.descuento != undefined) {
             const descuento = document.createElement("p")
             descuento.className = "descuento"
-            descuento.innerHTML = `${elemento.descuento}% DE DESCUENTO`
+            descuento.innerHTML = `${elemento.descuento}% OFF`
 
             let precioDescuento = elemento.precio - (elemento.precio * elemento.descuento / 100)
             const precio = document.createElement("h6")
@@ -152,7 +154,14 @@ function renderProductos (){
         btn.className = "btn btn-primary"
         btn.innerHTML = "Agregar al carrito"
         btn.onclick = function () {
-                let productoCarrito = new ProductoCarrito (elemento.precio,elemento.precio)
+            
+                let nombre = elemento.nombre
+                let precio = elemento.precio
+                let productoCarrito = new ProductoCarrito (nombre,precio,1)
+                
+                let verif = carrito.map(elemento => elemento.nombre).indexOf(nombre)
+                verif != -1 ? carrito[verif].cantidad ++ : 
+                
                 carrito.push (productoCarrito)
                 localStorage.setItem("carrito", JSON.stringify(carrito))
                 console.table(carrito)
@@ -211,7 +220,7 @@ function renderOfertas () {
         btn.innerHTML = "Agregar al carrito"
         btn.onclick = function () {
             //let productoCarrito = new ProductoCarrito (elemento.precio,precioDescuento)
-            carrito.push (new ProductoCarrito (elemento.precio,precioDescuento))
+            carrito.push (new ProductoCarrito (elemento.nombre,precioDescuento))
             localStorage.setItem("carrito", JSON.stringify(carrito))
             console.table(carrito)
         }
@@ -240,7 +249,7 @@ let productos = JSON.parse(localStorage.getItem("productos"));
 productos == null ?  productos = [asus, auricularesJbl, consolaPioneer, ipad, joystick, pcGamer, play5, sillaGamer, tvXiaomi] : productos;
 localStorage.setItem("productos", JSON.stringify(productos))
 
-let carrito = JSON.parse(localStorage.getItem("carrito"));
+carrito = JSON.parse(localStorage.getItem("carrito"));
 productos == null ?  productos = [] : productos;
 
 //let ofertas = JSON.parse(localStorage.getItem("ofertas"));
