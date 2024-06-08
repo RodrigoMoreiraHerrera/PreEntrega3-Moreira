@@ -250,12 +250,7 @@ productos == null ?  productos = [asus, auricularesJbl, consolaPioneer, ipad, jo
 localStorage.setItem("productos", JSON.stringify(productos))
 
 carrito = JSON.parse(localStorage.getItem("carrito"));
-productos == null ?  productos = [] : productos;
-
-//let ofertas = JSON.parse(localStorage.getItem("ofertas"));
-//ofertas == null ? ofertas = [asus, auricularesJbl, consolaPioneer, ipad] : ofertas;
-
-
+carrito == null ?  carrito = [] : carrito;
 
     
 renderProductos()
