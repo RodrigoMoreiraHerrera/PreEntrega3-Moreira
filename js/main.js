@@ -14,7 +14,7 @@ const ProductoCarrito = function(nombre,precio,cantidad) {
     this.cantidad = cantidad
 }
 
-let carrito = []
+//let carrito = []
 
 let asus = new Producto (
     "PC",
@@ -102,79 +102,188 @@ let tvXiaomi = new Producto (
 
 
 
+///////////////////////////////////////////
+
+
+function crearBtnAgregar (nombre,precio) {
+    const btn = document.createElement("button")
+    btn.type = "button"
+    btn.className = "btn btn-primary"
+    btn.innerHTML = "Agregar al carrito"
+    btn.onclick = function () {
+        
+            let productoCarrito = new ProductoCarrito (nombre,precio,1)
+            
+            let verif = carrito.map(elemento => elemento.nombre).indexOf(nombre)
+            verif != -1 ? carrito[verif].cantidad ++ : 
+            
+            carrito.push (productoCarrito)
+            localStorage.setItem("carrito", JSON.stringify(carrito))
+            console.table(carrito)
+        }
+    return btn;
+}
+
+
+///////////////////////////////////////////////////////////////
+
+function crearBtnMas(nombre,descripcion,precio,img) {
+    const btnMas = document.createElement("button");
+    btnMas.type = "button";
+    btnMas.className = "btn btn-primary";
+    btnMas.innerHTML = "Mas";
+
+    let modal = document.createElement("div");
+    modal.className = "modal fade";
+    modal.id = "myModal";
+    modal.tabIndex = "-1";
+    modal.arialabelledeby = "myModalLabel";
+    modal.ariaHidden = "true";
+
+    let modalDialog = document.createElement("div");
+    modalDialog.className = "modal-dialog";
+
+    let modalContent = document.createElement("div");
+    modalContent.className = "modal-content";
+
+    let modalHeader = document.createElement("div");
+    modalHeader.className = "modal-header";
+
+    let modalTitle = document.createElement("h5");
+    modalTitle.className = "modal-title";
+    modalTitle.id = "myModalLabel";
+    modalTitle.innerHTML = nombre;
+
+    let btnCerrar = document.createElement("button");
+    btnCerrar.type = "button";
+    btnCerrar.className = "btn-close";
+    btnCerrar.ariaLabel = "Close";
+    btnCerrar.onclick = function () {
+        myModal.hide();
+    }
+
+    let modalBody = document.createElement("div");
+    modalBody.className = "modal-body";
+    modalBody.innerHTML = descripcion;
+
+    let modalFooter = document.createElement("div")
+    modalFooter.className = "modal-footer";
+
+    let btnAgregar = crearBtnAgregar(nombre,precio) ;
+
+
+    let btnCarrarFooter = document.createElement("button");
+    btnCarrarFooter.type = "button";
+    btnCarrarFooter.className = "btn btn-secondary";
+    btnCarrarFooter.innerHTML = "Cerrar";
+    btnCarrarFooter.onclick = function () {
+        myModal.hide();
+    }
+
+    modalHeader.appendChild(modalTitle);
+    modalHeader.appendChild(btnCerrar);
+
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalContent.appendChild(modalFooter);
+
+    modalFooter.appendChild(btnAgregar);
+    modalFooter.appendChild(btnCarrarFooter);
+
+    modalDialog.appendChild(modalContent);
+
+    modal.appendChild(modalDialog);
+
+    const myModal = new bootstrap.Modal(modal);
+
+    btnMas.onclick = function () {
+        myModal.show();
+    };
+
+return btnMas;
+}
+
+/////////////////////////////////////////////////////////////
+
+
+function renderCard (imgP,nombreP,descripcionP,descuentoP,precioP) {
+    const card = document.createElement("div")
+    card.className = "card"
+    card.style = "width: 14rem;"
+    
+    const img = document.createElement("img")
+    img.className = "card-img-top"
+    img.src = imgP
+    img.alt = "Imagen de producto"
+
+    const cardBody = document.createElement("div")
+    cardBody.className = "card-body"
+
+    const title = document.createElement("h5")
+    title.className = "card-title"
+    title.innerHTML = nombreP
+
+    const desc = document.createElement("p")
+    desc.className = "card-text"
+    desc.innerHTML = descripcionP
+
+    cardBody.appendChild(title)
+    cardBody.appendChild(desc)
+
+    let precioAhora;
+
+    if (descuentoP != undefined) {
+        precioAhora = precioP - (precioP * descuentoP / 100)
+        const descuento = document.createElement("p")
+        descuento.className = "descuento"
+        descuento.innerHTML = `${descuentoP}% OFF`
+
+        const precio = document.createElement("h6")
+        precio.className = "text-end"
+        precio.innerHTML = `$ ${precioAhora}`
+
+        cardBody.appendChild(descuento)
+        cardBody.appendChild(precio)
+
+    } else {
+        precioAhora = precioP
+        const precio = document.createElement("h6")
+        precio.className = "text-end"
+        precio.innerHTML = `$ ${precioP}`
+
+        cardBody.appendChild(precio)
+    }
+
+    const btnAgregar = crearBtnAgregar(nombreP,precioAhora);
+
+    const btnMas = crearBtnMas(nombreP,descripcionP,precioAhora,imgP);
+    
+    cardBody.appendChild(btnAgregar)
+    cardBody.appendChild(btnMas)
+    card.appendChild(img)
+    card.appendChild(cardBody)
+    
+    return card;
+
+} 
+
+
+
+
+///////////////////////////////////////////////////////////////
+
+
 function renderProductos (){
     let containerProductos = document.getElementById("containerProductos")
 
     productos.forEach(elemento => {
-        const card = document.createElement("div")
-        card.className = "card"
-        card.style = "width: 14rem;"
-        
-        const img = document.createElement("img")
-        img.className = "card-img-top"
-        img.src = elemento.img
-        img.alt = "Imagen de producto"
-
-        const cardBody = document.createElement("div")
-        cardBody.className = "card-body"
-
-        const title = document.createElement("h5")
-        title.className = "card-title"
-        title.innerHTML = elemento.nombre
-
-        const desc = document.createElement("p")
-        desc.className = "card-text"
-        desc.innerHTML = elemento.descripcion
-
-        cardBody.appendChild(title)
-        cardBody.appendChild(desc)
-
-        if (elemento.descuento != undefined) {
-            const descuento = document.createElement("p")
-            descuento.className = "descuento"
-            descuento.innerHTML = `${elemento.descuento}% OFF`
-
-            let precioDescuento = elemento.precio - (elemento.precio * elemento.descuento / 100)
-            const precio = document.createElement("h6")
-            precio.className = "text-end"
-            precio.innerHTML = `$ ${precioDescuento}`
-
-            cardBody.appendChild(descuento)
-            cardBody.appendChild(precio)
-        
-        } else {
-            const precio = document.createElement("h6")
-            precio.className = "text-end"
-            precio.innerHTML = `$ ${elemento.precio}`
-
-            cardBody.appendChild(precio)
-        }
-
-        const btn = document.createElement("a")
-        btn.className = "btn btn-primary"
-        btn.innerHTML = "Agregar al carrito"
-        btn.onclick = function () {
-            
-                let nombre = elemento.nombre
-                let precio = elemento.precio
-                let productoCarrito = new ProductoCarrito (nombre,precio,1)
-                
-                let verif = carrito.map(elemento => elemento.nombre).indexOf(nombre)
-                verif != -1 ? carrito[verif].cantidad ++ : 
-                
-                carrito.push (productoCarrito)
-                localStorage.setItem("carrito", JSON.stringify(carrito))
-                console.table(carrito)
-            }
-
-        
-        cardBody.appendChild(btn)
-        card.appendChild(img)
-        card.appendChild(cardBody)
-        containerProductos.appendChild(card)
+        const card =  renderCard (elemento.img,elemento.nombre,elemento.descripcion,elemento.descuento,elemento.precio)
+        containerProductos.appendChild(card);
 
     });
 }
+
+
 
 
 function renderOfertas () {
@@ -186,56 +295,9 @@ function renderOfertas () {
         elemento == ofertas[0] ? item.className = "carousel-item active" :
         item.className = "carousel-item"
 
-        const card = document.createElement("div")
-        card.className = "card cardDescuento d-block w-50"
-        card.style = "width: 14rem;"
-        
-        const img = document.createElement("img")
-        img.className = "card-img-top"
-        img.src = elemento.img
-        img.alt = "Imagen de producto"
+        const card = renderCard(elemento.img,elemento.nombre,elemento.descripcion,elemento.descuento,elemento.precio)
 
-        const cardBody = document.createElement("div")
-        cardBody.className = "card-body"
-
-        const title = document.createElement("h5")
-        title.className = "card-title"
-        title.innerHTML = elemento.nombre
-
-        const desc = document.createElement("p")
-        desc.className = "card-text"
-        desc.innerHTML = elemento.descripcion
-
-        const descuento = document.createElement("p")
-            descuento.className = "descuento"
-            descuento.innerHTML = `${elemento.descuento}% DE DESCUENTO`
-
-            let precioDescuento = elemento.precio - (elemento.precio * elemento.descuento / 100)
-            const precio = document.createElement("h6")
-            precio.className = "text-end"
-            precio.innerHTML = `$ ${precioDescuento}`
-
-        const btn = document.createElement("a")
-        btn.className = "btn btn-primary btn-agregar-carrito"
-        btn.innerHTML = "Agregar al carrito"
-        btn.onclick = function () {
-            //let productoCarrito = new ProductoCarrito (elemento.precio,precioDescuento)
-            carrito.push (new ProductoCarrito (elemento.nombre,precioDescuento))
-            localStorage.setItem("carrito", JSON.stringify(carrito))
-            console.table(carrito)
-        }
-
-        const cartel = document.createElement("p")
-        cartel.className = "descuento"
-        cartel.innerHTML = elemento.descuento + " % DE DESCUENTO"
-
-        cardBody.appendChild(title)
-        cardBody.appendChild(desc)
-        cardBody.appendChild(descuento)
-        cardBody.appendChild(precio)
-        cardBody.appendChild(btn)
-        card.appendChild(img)
-        card.appendChild(cardBody)
+        card.className += " cardCarru w-50"
         item.appendChild(card)
         carouselInner.appendChild(item)
     });
@@ -249,7 +311,7 @@ let productos = JSON.parse(localStorage.getItem("productos"));
 productos == null ?  productos = [asus, auricularesJbl, consolaPioneer, ipad, joystick, pcGamer, play5, sillaGamer, tvXiaomi] : productos;
 localStorage.setItem("productos", JSON.stringify(productos))
 
-carrito = JSON.parse(localStorage.getItem("carrito"));
+let carrito = JSON.parse(localStorage.getItem("carrito"));
 carrito == null ?  carrito = [] : carrito;
 
     

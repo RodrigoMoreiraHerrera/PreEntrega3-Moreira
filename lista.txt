@@ -2,20 +2,20 @@ PRODUCTOS
 
 cantidad productosCarrito
 
-paginacion
+paginacion  PREGUNTAR
 
-btnMas
+btnMas FUNCION
 
 styles de cartel descuento
 styles cards
 styles titulos
 carrusel??
 
-btnAgregarCarrito
+btnAgregarCarrito ABSTRAER
 
 buscarProducto
 
-filtroProductos
+filtroProductos  BOTONES
 
 
 
