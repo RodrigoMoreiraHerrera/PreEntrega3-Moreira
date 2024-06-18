@@ -268,8 +268,6 @@ function renderCard (imgP,nombreP,descripcionP,descuentoP,precioP) {
 } 
 
 
-
-
 ///////////////////////////////////////////////////////////////
 
 
@@ -283,7 +281,7 @@ function renderProductos (){
     });
 }
 
-
+////////////////////////////////////////////////////////////////
 
 
 function renderOfertas () {
