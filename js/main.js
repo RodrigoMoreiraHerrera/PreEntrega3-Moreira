@@ -164,7 +164,17 @@ function crearBtnMas(nombre,descripcion,precio,img) {
 
     let modalBody = document.createElement("div");
     modalBody.className = "modal-body";
-    modalBody.innerHTML = descripcion;
+    modalBody.innerHTML = `<div class="card">
+                                <img src="${img}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">${descripcion}</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">An item</li>
+                                    <li class="list-group-item">A second item</li>
+                                    <li class="list-group-item">A third item</li>
+                                </ul>
+                                </div>`
 
     let modalFooter = document.createElement("div")
     modalFooter.className = "modal-footer";
@@ -209,7 +219,7 @@ return btnMas;
 function renderCard (imgP,nombreP,descripcionP,descuentoP,precioP) {
     const card = document.createElement("div")
     card.className = "card"
-    card.style = "width: 14rem;"
+    card.style = "width: 16rem;"
     
     const img = document.createElement("img")
     img.className = "card-img-top"
@@ -254,14 +264,20 @@ function renderCard (imgP,nombreP,descripcionP,descuentoP,precioP) {
         cardBody.appendChild(precio)
     }
 
+    const footer = document.createElement("div")
+    footer.className = "cardFooter"
+    
+
     const btnAgregar = crearBtnAgregar(nombreP,precioAhora);
 
     const btnMas = crearBtnMas(nombreP,descripcionP,precioAhora,imgP);
     
-    cardBody.appendChild(btnAgregar)
-    cardBody.appendChild(btnMas)
+    footer.appendChild(btnAgregar)
+    footer.appendChild(btnMas)
+    
     card.appendChild(img)
     card.appendChild(cardBody)
+    card.appendChild(footer)
     
     return card;
 
@@ -276,6 +292,7 @@ function renderProductos (){
 
     productos.forEach(elemento => {
         const card =  renderCard (elemento.img,elemento.nombre,elemento.descripcion,elemento.descuento,elemento.precio)
+        card.className += " cardProdu"
         containerProductos.appendChild(card);
 
     });
@@ -285,6 +302,21 @@ function renderProductos (){
 
 
 function renderOfertas () {
+    const caro = document.createElement("div")
+        caro.className = "carousel slide carousel-dark"
+        caro.id = "carouselExample"
+        caro.innerHTML = `<div id ="carouselDescInner" class="carousel-inner d-flex">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>`
+    document.getElementById("secOfertas").appendChild(caro)
+
     let carouselInner = document.getElementById("carouselDescInner")
     let ofertas = productos.filter(elemento => elemento.descuento != undefined)
     ofertas.forEach(elemento => {
@@ -316,3 +348,4 @@ carrito == null ?  carrito = [] : carrito;
 renderProductos()
 
 renderOfertas()
+

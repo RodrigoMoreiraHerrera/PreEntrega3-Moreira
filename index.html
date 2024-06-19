@@ -10,9 +10,9 @@
 </head>
 
 
-<body class="container text-center">
+<body class="container text-center ">
     
-  
+<section>
   <!--NavBar-->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -33,17 +33,17 @@
                 </li>
                 <li class="nav-item">
             </ul>
-            <form class="d-flex" role="search">
+            <form id="formNavBar" class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
             </form>
             </div>
-            <button type="button" class="btn btn-outline-success "><i class="bi bi-cart"></i></button>
+            <button id="btnCarrito" type="button" class="btn btn-outline-success "><i class="bi bi-cart"></i></button>
         </div>
         </nav>
+</section>
 
-
-
+<section>
 <!--carrucel-->
         <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
             <div id="carouselInner" class="carousel-inner">
@@ -72,37 +72,26 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
+</section>
 
+      <section>
+      <h1 class="display-1">Bienvenidos</h1>
+        <h2>Ofertas destacadas</h2>
+      </section>
 
-        <h1>Bienvenidos</h1>
-          <h2>Ofertas destacados</h2>
+      <section id="secOfertas">
+      </section>
 
-
-
-<!--CARRUCEL DESCUENTOS-->
-<div id="carouselExample" class="carousel slide carousel-dark">
-  <div id ="carouselDescInner" class="carousel-inner d-flex">
-
-
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
-
-
-
-          <h2>Nuestros Productos</h2>
+      <section>
+        <h2>Nuestros Productos</h2>
+      </section>
+      
+      <section>
           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" name="btnradio" id="btnradio0" autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="btnradio0">TODOS</label>
 
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
             <label class="btn btn-outline-primary" for="btnradio1">PC</label>
           
             <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
@@ -111,18 +100,16 @@
             <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
             <label class="btn btn-outline-primary" for="btnradio3">GAMER</label>
           </div>
-            <div id="containerProductos" class="row justify-content-center">
+      </section>
 
+      <section>
+          <div id="containerProductos" class="row  justify-content-center">
+          </div>
+      </section>
 
-
-            </div>
-
-
-
-
-
-
-<h2>FOOTER</h2>
+      <section>
+        <h2>FOOTER</h2>
+      </section>
 
 
 

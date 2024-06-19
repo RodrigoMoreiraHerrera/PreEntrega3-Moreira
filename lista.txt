@@ -18,7 +18,9 @@ buscarProducto
 filtroProductos  BOTONES
 
 
+json con stock
 
+secciones
 
 
 
