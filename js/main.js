@@ -14,8 +14,8 @@ const ProductoCarrito = function(nombre,precio,cantidad) {
     this.cantidad = cantidad
 }
 
-//let carrito = []
 
+/*
 let asus = new Producto (
     "PC",
     "Pc Asus",
@@ -100,7 +100,7 @@ let tvXiaomi = new Producto (
     "img/cards/tv-xiaomi/tv-xiaomi.jpg"
 )
 
-
+*/
 
 ///////////////////////////////////////////
 
@@ -333,19 +333,50 @@ function renderOfertas () {
     });
 }
 
+////////////////////////////////////////////////////////////////
 
 
 
 
-let productos = JSON.parse(localStorage.getItem("productos"));
-productos == null ?  productos = [asus, auricularesJbl, consolaPioneer, ipad, joystick, pcGamer, play5, sillaGamer, tvXiaomi] : productos;
-localStorage.setItem("productos", JSON.stringify(productos))
+
+/////////////////////////////////////////////////////////////////
+
+const pedirStock = async () => {
+    const resp = await fetch('./stock.json')
+    const stock = await resp.json()
+    const productos = JSON.stringify(stock)
+    localStorage.setItem('productos', productos)
+}
+
+////////////////////////////////////////////////////////////////////
+
+
+let productos = JSON.parse(localStorage.getItem("productos"))
+productos == null ?  productos = [] : productos;
 
 let carrito = JSON.parse(localStorage.getItem("carrito"));
-carrito == null ?  carrito = [] : carrito;
+    if (carrito == null) { carrito = [] } 
 
+let btnCarrito = document.getElementById("btnCarrito")
+btnCarrito.addEventListener("click", () => {
+    window.location.href = "pages/carrito.html"
+})
+
+pedirStock()
+.then(()=>{
+    productos = JSON.parse(localStorage.getItem("productos"));
     
-renderProductos()
+    
+    
+    
 
-renderOfertas()
+    renderProductos()
+    renderOfertas()
+
+})
+
+
+
+
+
 
